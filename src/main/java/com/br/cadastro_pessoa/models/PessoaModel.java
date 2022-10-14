@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="pessoa")
-public class PessoasModel {
+public class PessoaModel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

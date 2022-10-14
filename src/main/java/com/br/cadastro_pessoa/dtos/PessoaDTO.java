@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PessoasDTO {
+public class PessoaDTO {
 
     private Long id;
     @NotBlank
