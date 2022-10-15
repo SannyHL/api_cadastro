@@ -98,6 +98,24 @@ public class PessoaControllerTest {
         assertEquals(EMAIL, response.getBody().get(0).getEmail());
     }
 
+    @Test
+    void whenFindByIdThenReturnSuccess() {
+        when(service.findById(anyLong())).thenReturn(pessoa);
+
+        when(mapper.map(any(), any())).thenReturn(pessoaDTO);
+
+        ResponseEntity<PessoaDTO> response = controller.findById(ID);
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(PessoaDTO.class, response.getBody().getClass());
+        assertEquals(ID, response.getBody().getId());
+        assertEquals(NOME, response.getBody().getNome());
+        assertEquals(DATA_NASCIMENTO, response.getBody().getDataDeNascimento());
+        assertEquals(EMAIL, response.getBody().getEmail());
+
+    }
 
     private void startQuestions(){
 
