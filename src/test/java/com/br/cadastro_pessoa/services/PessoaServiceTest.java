@@ -63,6 +63,17 @@ public class PessoaServiceTest {
         assertEquals(PessoaModel.class, response.getClass());
     }
 
+    @Test
+    void whenDeleteByIdWhithSuces() {
+        when(repository.findById(anyLong())).thenReturn(pessoaOptional);
+
+        service.deleteById(ID);
+
+        verify(repository, times(1)).deleteById(anyLong());
+
+    }
+
+   
     private void startQuestions(){
 
         pessoa  = new PessoaModel(ID, NOME, DATA_NASCIMENTO, EMAIL);
