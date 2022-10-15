@@ -118,6 +118,18 @@ public class PessoaServiceTest {
 
     }
 
+    @Test
+    void whenFindByIdThenReturnObjectNotFoundException() {
+        when(repository.findById(anyLong())).thenThrow(new ObjectNotFoundException("Dados não encontrados, tente outra vez!"));
+
+        try{
+            service.findById(ID);
+        } catch (Exception e){
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("Dados não encontrados, tente outra vez!", e.getMessage());
+        }
+    }
+
     private void startQuestions(){
 
         pessoa  = new PessoaModel(ID, NOME, DATA_NASCIMENTO, EMAIL);
