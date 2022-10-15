@@ -16,7 +16,7 @@ public class SwaggerConfig {
     public Docket getDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.br.cadastro_pessoas.controllers"))
+        .apis(RequestHandlerSelectors.basePackage("com.br.cadastro_pessoa.controllers"))
         .build()
         .apiInfo(metaData());
     }
