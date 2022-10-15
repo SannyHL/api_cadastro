@@ -33,7 +33,6 @@ public class PessoaServiceTest {
     private static final LocalDate DATA_NASCIMENTO = LocalDate.of(1995, 04, 06);
     private static final String EMAIL = "fernada@gmail.com";
 
-
     @InjectMocks
     private PessoaService service;
 
@@ -72,7 +71,6 @@ public class PessoaServiceTest {
         service.deleteById(ID);
 
         verify(repository, times(1)).deleteById(anyLong());
-
     }
 
     @Test
@@ -99,8 +97,7 @@ public class PessoaServiceTest {
         assertEquals(NOME, response.get(0).getNome());
         assertEquals(DATA_NASCIMENTO, response.get(0).getDataDeNascimento());
         assertEquals(EMAIL, response.get(0).getEmail());
-        assertEquals(PessoaModel.class, response.get(0).getClass());
-        
+        assertEquals(PessoaModel.class, response.get(0).getClass()); 
     }
 
     @Test
@@ -115,7 +112,6 @@ public class PessoaServiceTest {
         assertEquals(DATA_NASCIMENTO, response.getDataDeNascimento());
         assertEquals(EMAIL, response.getEmail());
         assertEquals(PessoaModel.class, response.getClass());
-
     }
 
     @Test
