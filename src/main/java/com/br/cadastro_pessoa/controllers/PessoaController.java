@@ -54,7 +54,7 @@ public class PessoaController {
 
     //Método para buscar todas as pessoas no banco de dados:
     @GetMapping
-    @ApiOperation("Listar todas")
+    @ApiOperation("Listar todos")
     public ResponseEntity<List<PessoaDTO>> findAll(){
         return ResponseEntity.ok()
         .body(service.findAll()
