@@ -130,6 +130,20 @@ public class PessoaServiceTest {
         }
     }
 
+    @Test
+    void whenUpdateThenReturnSucess() {
+        when(repository.save(any())).thenReturn(pessoa);
+
+        PessoaModel response = service.update(pessoaDTO);
+
+        assertNotNull(response);
+        assertEquals(ID, response.getId());
+        assertEquals(NOME, response.getNome());
+        assertEquals(DATA_NASCIMENTO, response.getDataDeNascimento());
+        assertEquals(EMAIL, response.getEmail());
+        assertEquals(PessoaModel.class, response.getClass());
+    }
+
     private void startQuestions(){
 
         pessoa  = new PessoaModel(ID, NOME, DATA_NASCIMENTO, EMAIL);
