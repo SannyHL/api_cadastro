@@ -21,16 +21,19 @@ public class PessoaService implements PessoaServiceInterface{
     @Autowired
     private ModelMapper mapper;
 
+    //Método para criação de pessoa
     @Override
     public PessoaModel create(PessoaDTO pessoaDTO) {
         return repository.save(mapper.map(pessoaDTO, PessoaModel.class));
     }
 
+    //Método para buscar todas as pessoas no banco de dados:
     @Override
     public List<PessoaModel> findAll() {
         return repository.findAll();
     }
 
+    //Método para buscar pessoa por Id:
     @Override
     public PessoaModel findById(Long id) {
         Optional<PessoaModel> pessoaOptional = repository.findById(id);
