@@ -1,0 +1,4 @@
+com\br\cadastro_pessoa\controllers\PessoaControllerTest.class
+com\br\cadastro_pessoa\exceptions\ResourceExceptionHandlerTest.class
+com\br\cadastro_pessoa\CadastroPessoaApplicationTests.class
+com\br\cadastro_pessoa\services\PessoaServiceTest.class
