@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -85,7 +86,23 @@ public class PessoaServiceTest {
             assertEquals("Dados não encontrados, tente outra vez!", e.getMessage());
         }
     }
-    
+
+    @Test
+    void whenFindAllReturnAnListOfPessoas() {
+        when(repository.findAll()).thenReturn(List.of(pessoa));
+
+        List<PessoaModel> response = service.findAll();
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(ID, response.get(0).getId());
+        assertEquals(NOME, response.get(0).getNome());
+        assertEquals(DATA_NASCIMENTO, response.get(0).getDataDeNascimento());
+        assertEquals(EMAIL, response.get(0).getEmail());
+        assertEquals(PessoaModel.class, response.get(0).getClass());
+        
+    }
+
    
     private void startQuestions(){
 
