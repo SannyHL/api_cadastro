@@ -41,7 +41,7 @@ public class PessoaController {
     
     //Método para criação de pessoa 
     @PostMapping
-    @ApiOperation("Criar cadastro")
+    @ApiOperation("Criar novo")
     public ResponseEntity<PessoaDTO> create(@RequestBody PessoaDTO pessoaDTO){
         PessoaModel pessoaModel = service.create(pessoaDTO);
         URI uri = ServletUriComponentsBuilder
@@ -54,7 +54,7 @@ public class PessoaController {
 
     //Método para buscar todas as pessoas no banco de dados:
     @GetMapping
-    @ApiOperation("Listar todas as pessoas")
+    @ApiOperation("Listar todas")
     public ResponseEntity<List<PessoaDTO>> findAll(){
         return ResponseEntity.ok()
         .body(service.findAll()
@@ -85,7 +85,4 @@ public class PessoaController {
         return ResponseEntity.noContent().build();
     }
     
-
-    
-
 }
