@@ -84,18 +84,19 @@ public class PessoaControllerTest {
         when(mapper.map(any(), any())).thenReturn(pessoaDTO);
 
         ResponseEntity<List<PessoaDTO>> response = controller.findAll();
+        List<PessoaDTO> responseBody = response.getBody();
 
         assertNotNull(response);
         assertNotNull(response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(ResponseEntity.class, response.getClass());
-        assertEquals(ArrayList.class, response.getBody().getClass());
-        assertEquals(PessoaDTO.class, response.getBody().get(0).getClass());
-        assertEquals(1, response.getBody().size());
-        assertEquals(ID, response.getBody().get(0).getId());
-        assertEquals(NOME, response.getBody().get(0).getNome());
-        assertEquals(DATA_NASCIMENTO, response.getBody().get(0).getDataDeNascimento());
-        assertEquals(EMAIL, response.getBody().get(0).getEmail());
+        assertEquals(ArrayList.class, responseBody.getClass());
+        assertEquals(PessoaDTO.class, responseBody.get(0).getClass());
+        assertEquals(1, responseBody.size());
+        assertEquals(ID, responseBody.get(0).getId());
+        assertEquals(NOME, responseBody.get(0).getNome());
+        assertEquals(DATA_NASCIMENTO, responseBody.get(0).getDataDeNascimento());
+        assertEquals(EMAIL, responseBody.get(0).getEmail());
     }
 
     @Test
@@ -105,18 +106,37 @@ public class PessoaControllerTest {
         when(mapper.map(any(), any())).thenReturn(pessoaDTO);
 
         ResponseEntity<PessoaDTO> response = controller.findById(ID);
+        PessoaDTO responseBody = response.getBody();
 
         assertNotNull(response);
         assertNotNull(response.getBody());
         assertEquals(ResponseEntity.class, response.getClass());
-        assertEquals(PessoaDTO.class, response.getBody().getClass());
-        assertEquals(ID, response.getBody().getId());
-        assertEquals(NOME, response.getBody().getNome());
-        assertEquals(DATA_NASCIMENTO, response.getBody().getDataDeNascimento());
-        assertEquals(EMAIL, response.getBody().getEmail());
+        assertEquals(PessoaDTO.class, responseBody.getClass());
+        assertEquals(ID, responseBody.getId());
+        assertEquals(NOME, responseBody.getNome());
+        assertEquals(DATA_NASCIMENTO, responseBody.getDataDeNascimento());
+        assertEquals(EMAIL, responseBody.getEmail());
 
     }
 
+    @Test
+    void whenUpdateThenReturnSuccess() {
+        when(service.update(pessoaDTO)).thenReturn(pessoa);
+        when(mapper.map(any(), any())).thenReturn(pessoaDTO);
+        ResponseEntity<PessoaDTO> response = controller.update(ID, pessoaDTO);
+        PessoaDTO responseBody = response.getBody();
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(PessoaDTO.class, responseBody.getClass());
+        assertEquals(ID, responseBody.getId());
+        assertEquals(NOME, responseBody.getNome());
+        assertEquals(DATA_NASCIMENTO, responseBody.getDataDeNascimento());
+        assertEquals(EMAIL, responseBody.getEmail());
+
+    }
     private void startQuestions(){
 
         pessoa  = new PessoaModel(ID, NOME, DATA_NASCIMENTO, EMAIL);
