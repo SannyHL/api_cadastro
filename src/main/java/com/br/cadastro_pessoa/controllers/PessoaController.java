@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,6 +77,13 @@ public class PessoaController {
         return ResponseEntity.ok().body(mapper.map(service.update(pessoaDTO), PessoaDTO.class));
     }
 
+    //Método para deletar cadastro
+    @DeleteMapping(ID)
+    @ApiOperation("Deletar")
+    public ResponseEntity<PessoaDTO> delete(@PathVariable Long id){
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
     
 
     
