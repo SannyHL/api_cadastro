@@ -20,6 +20,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.br.cadastro_pessoa.dtos.PessoaDTO;
+import com.br.cadastro_pessoa.exceptions.ObjectNotFoundException;
 import com.br.cadastro_pessoa.models.PessoaModel;
 import com.br.cadastro_pessoa.repositories.PessoaRepository;
 
@@ -73,6 +74,18 @@ public class PessoaServiceTest {
 
     }
 
+    @Test
+    void deleteWithObjectNotFoundException() {
+        when(repository.findById(anyLong())).thenThrow(new ObjectNotFoundException("Dados não encontrados, tente outra vez!"));
+        
+        try{
+            service.deleteById(ID);
+        } catch (Exception e){
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("Dados não encontrados, tente outra vez!", e.getMessage());
+        }
+    }
+    
    
     private void startQuestions(){
 
