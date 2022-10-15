@@ -16,8 +16,10 @@ import com.br.cadastro_pessoa.repositories.PessoaRepository;
 @Service
 public class PessoaService implements PessoaServiceInterface{
 
+    //injeção de dependência do PessoaService:
     @Autowired
     private PessoaRepository repository;
+    //injeção de dependência do ModelMapper:
     @Autowired
     private ModelMapper mapper;
 
@@ -38,6 +40,20 @@ public class PessoaService implements PessoaServiceInterface{
     public PessoaModel findById(Long id) {
         Optional<PessoaModel> pessoaOptional = repository.findById(id);
         return pessoaOptional.orElseThrow(() -> new ObjectNotFoundException("Dados não encontrados, tente outra vez!"));
+    }
+
+    //Método para atualizar
+    @Override
+    public PessoaModel update(PessoaDTO pessoaDTO) {
+        return repository.save(mapper.map(pessoaDTO, PessoaModel.class));
+    }
+
+    //Método para deletar buscando por Id
+    @Override
+    public void deleteById(Long id) {
+        findById(id);
+        repository.deleteById(id);
+        
     }
     
 }
