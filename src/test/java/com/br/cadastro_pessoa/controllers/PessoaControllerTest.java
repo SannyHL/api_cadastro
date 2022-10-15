@@ -11,6 +11,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -74,6 +76,26 @@ public class PessoaControllerTest {
         assertEquals(ResponseEntity.class, response.getClass());
         verify(service, times(1)).deleteById(anyLong());
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+    }
+
+    @Test
+    void whenFindAllThenReturnAnListPessoaDTO() {
+        when(service.findAll()).thenReturn(List.of(pessoa));
+        when(mapper.map(any(), any())).thenReturn(pessoaDTO);
+
+        ResponseEntity<List<PessoaDTO>> response = controller.findAll();
+
+        assertNotNull(response);
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(ResponseEntity.class, response.getClass());
+        assertEquals(ArrayList.class, response.getBody().getClass());
+        assertEquals(PessoaDTO.class, response.getBody().get(0).getClass());
+        assertEquals(1, response.getBody().size());
+        assertEquals(ID, response.getBody().get(0).getId());
+        assertEquals(NOME, response.getBody().get(0).getNome());
+        assertEquals(DATA_NASCIMENTO, response.getBody().get(0).getDataDeNascimento());
+        assertEquals(EMAIL, response.getBody().get(0).getEmail());
     }
 
 
