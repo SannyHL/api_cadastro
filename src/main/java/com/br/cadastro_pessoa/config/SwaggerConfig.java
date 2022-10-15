@@ -23,10 +23,10 @@ public class SwaggerConfig {
 
     private ApiInfo metaData(){
         return new ApiInfoBuilder()
-        .title("API REST Pessoas")
+        .title("API REST Cadastro Pessoas")
         .description("API REST para cadastro de pessoas no banco de dados")
         .version("1.0.0")
-        .contact(new Contact("Sanny Helen Lima", "https://github.com/SannyHL/api_cadastro_pessoas", "sannyhelenlima@gmail.com"))
+        .contact(new Contact("Sanny Helen Lima", "https://github.com/SannyHL/api_cadastro", "sannyhelenlima@gmail.com"))
         .build();
     }
 }
