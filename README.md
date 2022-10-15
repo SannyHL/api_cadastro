@@ -13,8 +13,6 @@
 - [X] Atualização do cadastro
 - [X] Busca de cadastro por ID
 - [X] Buscar todos os cadastro
-- [X] Utilização do Swagger para documentação e realização do CRUD.
-- [X] Testes unitários utilizando JUnit
 
 <br><h2>🛠 Algumas das tecnologias utilizadas na construção do projeto:</h2>
 
@@ -35,6 +33,7 @@
 
 <h2 align="center"><i>🌟 Modelo Json para o Post e o Put</i></h2><br>
 <img src="https://user-images.githubusercontent.com/104280692/195988667-c5d24877-5cdc-40b8-893b-bbbee2be83cf.png" height="150px"/><br>
+<h4> ⚠O id não precisa ser informado pois é gerado automaticamente.</h4>
 
 <h2>🔎 Buscar, criar, deletar e atualizar cadastro via Swagger:</h2><br>
 
