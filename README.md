@@ -75,7 +75,7 @@
 ```bash
 
 ➩ Clone este repositório
-$ git clone <https://github.com/SannyHL/quiz_api.git>
+$ git clone <https://github.com/SannyHL/api_cadastro.git>
 
 ➩ Acesse o código com o editor de sua preferência
 
