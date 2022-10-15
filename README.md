@@ -26,11 +26,10 @@
 - <b>JPA</b>(disponibilizou métodos para CRUD)
 
 
- <br><h1>⚠ Informação</h1>
+ <br><h2>⚠ Dados Swagger:</h2>
 
-<h5>O Swagger  E para utilizá-lo deve ser informado o usuário: api e senha: 123.</h5>
-<h5>Os testes realizados na aplicação utilizaram JUnit5.</h5>
-
+<h3>🍁 Usuário: api</h3>
+<h3>🍁 Senha: 123</h3>
 
 <br><h1 align="center">Utilizar a API 📗</h1><br>
 
@@ -67,7 +66,7 @@
 
 <h4>📋 Pré-requisitos</h4>
 
-- ➡Ter instalado o Java - a versão utilizada nesse projeto foi a 17.
+- ➡Ter instalado o Java - a versão utilizada neste projeto foi a 17.
 - ➡Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 
@@ -89,7 +88,7 @@ $ git checkout development
 
 ➩ Rode a aplicação
 
-➩ O servidor inciará na porta:8080 por default - acesse <http://localhost:8080>
+➩ O servidor iniciará na porta:8080 por default - acesse <http://localhost:8080>
 
 ```
 
@@ -110,3 +109,5 @@ Criado com ❤️ por Sanny Helen Lima <br>
 
 [![Linkedin Badge](https://img.shields.io/badge/-SannyHL-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/sannyhelenlima/)](https://www.linkedin.com/in/sannyhelenlima) 
 [![Gmail Badge](https://img.shields.io/badge/-sannyhelenlima@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:sannyhelenlima@gmail.com)](mailto:sannyhelenlima@gmail.com)
+
+
