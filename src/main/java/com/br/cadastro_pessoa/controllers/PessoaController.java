@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +28,8 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "API Controller")
 public class PessoaController {
 
+    private static final String ID = "/{id}";
+
     //injeção de dependência do PessoaService:
     @Autowired 
     private PessoaService service;
@@ -35,18 +37,20 @@ public class PessoaController {
     @Autowired
     private ModelMapper mapper;
     
+    //Método para criação de pessoa 
     @PostMapping
     @ApiOperation("Criar cadastro")
     public ResponseEntity<PessoaDTO> create(@RequestBody PessoaDTO pessoaDTO){
         PessoaModel pessoaModel = service.create(pessoaDTO);
         URI uri = ServletUriComponentsBuilder
         .fromCurrentRequest()
-        .path("/{id}")
+        .path(ID)
         .buildAndExpand(pessoaModel.getId())
         .toUri();
         return ResponseEntity.created(uri).build();
     } 
 
+    //Método para buscar todas as pessoas no banco de dados:
     @GetMapping
     @ApiOperation("Listar todas as pessoas")
     public ResponseEntity<List<PessoaDTO>> findAll(){
@@ -54,6 +58,14 @@ public class PessoaController {
         .body(service.findAll()
         .stream().map(objetos -> mapper.map(objetos, PessoaDTO.class))
         .collect(Collectors.toList()));
+    }
+
+    //Método para buscar pessoa por Id:
+    @GetMapping(ID)
+    @ApiOperation("Busca por Id")
+    public ResponseEntity<PessoaDTO> findById(@PathVariable Long id){
+        return ResponseEntity.ok().body(mapper.map(service.findById(id), PessoaDTO.class));
+        
     }
 
     
